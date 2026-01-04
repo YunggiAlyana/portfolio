@@ -42,14 +42,44 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Yunggi Alyana Rahman",
+  "url": "https://yunggialyana.dev",
+  "image": "https://yunggialyana.dev/me.jpeg",
+  "jobTitle": "Software Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance / Open to Work"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/yunggialyana",
+    "https://github.com/yunggialyana",
+    "https://twitter.com/yunggialyana",
+    "https://www.instagram.com/yunggialyana",
+    "https://www.dicoding.com/users/yunggialyana",
+    "https://www.tiktok.com/@yunggialyana",
+    "https://www.youtube.com/@yunggialyana",
+    "https://www.facebook.com/yunggialyana",
+    "https://stockbit.com/Yunggi"
+
+  ],
+  "knowsAbout": ["Next.js", "Web Security", "React", "System Architecture", "Machine Learning"]
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en"> 
       <body className={`${inter.className} bg-neutral-950 text-neutral-200 antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>
