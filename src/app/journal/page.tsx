@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from "next/link";
-import { ArrowLeft, Calendar, Tag, Clock, ArrowRight, Image as ImageIcon, Eye } from 'lucide-react';
+import { ArrowLeft, Calendar, Tag, Clock, ArrowRight, Eye } from 'lucide-react'; 
 import { journalPosts } from '@/data/journal-posts';
 
 export default function JournalPage() {
@@ -29,7 +29,7 @@ export default function JournalPage() {
       <div className="max-w-4xl mx-auto relative z-10 mb-16">
         <Link 
             href="/#journal" 
-            scroll={false} // MENCEGAH SCROLL OTOMATIS BROWSER
+            scroll={false} 
             className="inline-flex items-center text-zinc-500 hover:text-white mb-8 transition-colors group"
         >
           <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -67,21 +67,24 @@ export default function JournalPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Image Placeholder */}
+                {/* Image Section (Updated) */}
                 <div 
                    onClick={() => toggleImage(idx)}
                    className="col-span-1 h-48 md:h-full bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden relative cursor-pointer group/image transition-all hover:border-white/20"
                 >
-                   <div className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 transform group-hover/image:scale-105 ${isToggled ? 'opacity-0' : 'opacity-100'}`}>
-                      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-                      <ImageIcon size={24} className="mb-2 opacity-40 text-zinc-500" />
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-600">Cover Image</span>
+                   <div className={`absolute inset-0 transition-all duration-500 transform group-hover/image:scale-105 ${isToggled ? 'opacity-0' : 'opacity-100'}`}>
+                      <img 
+                        src="/images/journal/google-search-proof.png" 
+                        alt="Journal Cover"
+                        className="w-full h-full object-cover opacity-80 group-hover/image:opacity-100 transition-opacity"
+                      />
                    </div>
                    
+                   {/* Overlay State (Saat di-klik/toggle) */}
                    <div className={`absolute inset-0 bg-pink-900/20 flex flex-col items-center justify-center transition-all duration-500 transform group-hover/image:scale-105 ${isToggled ? 'opacity-100' : 'opacity-0'}`}>
                       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 mix-blend-overlay"></div>
                       <Eye size={32} className="mb-2 text-pink-400" />
-                      <span className="text-xs font-bold text-white">Preview</span>
+                      <span className="text-xs font-bold text-white">Previewing</span>
                    </div>
                 </div>
 

@@ -51,7 +51,8 @@ const jsonLd = {
   "jobTitle": "Software Engineer",
   "worksFor": {
     "@type": "Organization",
-    "name": "Freelance / Open to Work"
+    "name": "Indomaret Group",
+    "sameAs": "https://indomaret.co.id"
   },
   "sameAs": [
     "https://www.linkedin.com/in/yunggialyana",

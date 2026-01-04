@@ -19,11 +19,12 @@ export const journalPosts = [
       </p>
 
       <div class="my-6">
-        <div class="w-full aspect-video bg-zinc-900 border border-white/10 rounded-xl flex items-center justify-center flex-col text-zinc-500 overflow-hidden relative">
-            <span class="text-4xl opacity-20 mb-2">🖼️</span>
-            <span class="text-xs font-mono border border-white/10 px-2 py-1 rounded">Placeholder: Google Page 1 Result</span>
-        </div>
-        <p class="text-center text-xs text-zinc-500 italic mt-2">Figure 1: The ecosystem dominating the search results.</p>
+        <img 
+          src="/images/journal/google-search-proof.png" 
+          alt="Google Search Result showing Yunggi Alyana ecosystem" 
+          class="w-full rounded-xl border border-white/10 shadow-2xl"
+        />
+        <p class="text-center text-xs text-zinc-500 italic mt-2">Figure 1: The ecosystem dominating the search results. My portfolio ranks #1, followed immediately by professional profiles.</p>
       </div>
 
       <p>
@@ -80,12 +81,27 @@ export const journalPosts = [
         "Hi, this website belongs to Yunggi Alyana Rahman. He is a Software Developer. Here are his verified links..."
       </blockquote>
 
-      <div class="my-6">
-        <div class="w-full aspect-video bg-zinc-900 border border-white/10 rounded-xl flex items-center justify-center flex-col text-zinc-500 overflow-hidden relative">
-            <span class="text-4xl opacity-20 mb-2">✅</span>
-            <span class="text-xs font-mono border border-white/10 px-2 py-1 rounded">Placeholder: JSON-LD Validator Result</span>
-        </div>
-        <p class="text-center text-xs text-zinc-500 italic mt-2">Figure 2: Validated Person Schema ensuring rich results.</p>
+      <div class="my-6 bg-[#0a0a0a] border border-white/10 rounded-xl p-4 overflow-x-auto">
+        <pre><code class="text-sm font-mono text-blue-400">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Yunggi Alyana Rahman",
+  "url": "https://yunggialyana.dev",
+  "sameAs": [
+    "https://www.linkedin.com/in/yunggialyana",
+    "https://github.com/yunggialyana",
+    "https://www.instagram.com/yunggialyana",
+    "https://x.com/yunggialyana"
+  ],
+  "jobTitle": "Software Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Indomaret Group"
+  }
+}
+&lt;/script&gt;</code></pre>
+        <p class="text-center text-xs text-zinc-500 italic mt-4">Figure 2: The actual JSON-LD code injected into my website head tag.</p>
       </div>
 
       <p>
@@ -94,19 +110,20 @@ export const journalPosts = [
 
       <h2>6. The Feedback Loop: Data-Driven Validation</h2>
       <p>
-        As an engineer, I don't rely on assumptions; I rely on metrics. I connected my ecosystem to <b>Google Search Console (GSC)</b> to track Impressions and CTR.
+        As an engineer, I don't rely on assumptions; I rely on metrics. I monitor my traffic using <b>Cloudflare Web Analytics</b> to track requests and geography.
       </p>
 
       <div class="my-6">
-        <div class="w-full aspect-video bg-zinc-900 border border-white/10 rounded-xl flex items-center justify-center flex-col text-zinc-500 overflow-hidden relative">
-            <span class="text-4xl opacity-20 mb-2">📈</span>
-            <span class="text-xs font-mono border border-white/10 px-2 py-1 rounded">Placeholder: GSC Performance Graph</span>
-        </div>
-        <p class="text-center text-xs text-zinc-500 italic mt-2">Figure 3: Consistent traffic growth & keyword validation.</p>
+        <img 
+          src="/images/journal/cloudflare-analytics.png" 
+          alt="Cloudflare Analytics Dashboard" 
+          class="w-full rounded-xl border border-white/10 shadow-2xl"
+        />
+        <p class="text-center text-xs text-zinc-500 italic mt-2">Figure 3: Tracking 1.35k requests and global distribution to validate visibility.</p>
       </div>
 
       <p>
-        This data creates a feedback loop. If my ranking drops, I know I need to optimize. It turns Personal Branding from vanity into a measurable system.
+        This data creates a feedback loop. Whether the traffic comes from recruiters in Indonesia or bots in Sweden, having visibility allows me to optimize my "digital shelf" constantly.
       </p>
 
       <h2>7. SEO as a Defense Mechanism</h2>
