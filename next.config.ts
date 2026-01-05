@@ -2,20 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    formats: ['image/avif', 'image/webp'], // Prioritaskan AVIF
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**', // Izinkan gambar dari sumber luar (jika ada)
+        hostname: '**',
       },
     ],
   },
-
-  // 3. Kompresi & Security Basic
   compress: true,
   poweredByHeader: false,
-
-  // 4. Security Headers (PENTING untuk Security Engineer)
   async headers() {
     return [
       {
@@ -23,19 +19,31 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'X-Frame-Options',
-            value: 'DENY', // Anti-Clickjacking
+            value: 'DENY',
           },
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff', // Anti-MIME Sniffing
+            value: 'nosniff',
           },
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
           {
-            key: 'Permissions-Policy', // Batasi akses fitur browser
-            value: "camera=(), microphone=(), geolocation=()"
+            key: 'Permissions-Policy',
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' https://challenges.cloudflare.com;",
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: 'https://yunggialyana.dev',
           }
         ],
       },
