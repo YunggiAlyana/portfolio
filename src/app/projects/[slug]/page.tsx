@@ -1,73 +1,49 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { journalPosts } from '@/data/journal-posts';
-import JournalPostContent from '@/components/pages/JournalPostContent'; // Pastikan file ini sudah dibuat dari chat sebelumnya
+import { projects } from '@/data/projects';
+import ProjectDetailContent from '@/components/pages/ProjectDetailContent';
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-// 1. Generate Metadata Dinamis (Server-side)
+// 1. Generate Metadata Dinamis
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = journalPosts.find((p) => p.slug === slug);
+  
+  // Cari project (Exact match atau Case-insensitive match)
+  const project = projects.find((p) => p.slug === slug) || 
+                  projects.find((p) => p.slug.toLowerCase() === slug.toLowerCase());
 
-  if (!post) {
-    return { title: 'Post Not Found' };
+  if (!project) {
+    return {
+      title: 'Project Not Found',
+    };
   }
 
   return {
-    title: `${post.title} | Yunggi Alyana Journal`,
-    description: post.excerpt,
+    title: `${project.title} | Yunggi Alyana Projects`,
+    description: project.desc,
     openGraph: {
-        title: post.title,
-        description: post.excerpt,
-        type: 'article',
-        publishedTime: post.date, // Pastikan format tanggal valid jika memungkinkan
-        authors: ['Yunggi Alyana'],
+        title: project.title,
+        description: project.desc,
+        // Jika nanti mau tambah gambar OG khusus project, bisa di sini
     }
   };
 }
 
-// 2. Server Component Utama
-export default async function JournalPostPage({ params }: Props) {
+// 2. Server Component Wrapper
+export default async function ProjectDetailPage({ params }: Props) {
   const { slug } = await params;
-  const post = journalPosts.find((p) => p.slug === slug);
 
-  if (!post) {
+  // Logic pencarian data yang Robust
+  const project = projects.find((p) => p.slug === slug) || 
+                  projects.find((p) => p.slug.toLowerCase() === slug.toLowerCase());
+
+  if (!project) {
     notFound();
   }
 
-  // Schema Markup (JSON-LD) untuk Artikel Blog
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "description": post.excerpt,
-    "image": `https://yunggialyana.dev/journal/${post.slug}/opengraph-image`, // URL Image otomatis
-    "datePublished": post.date, 
-    "author": {
-      "@type": "Person",
-      "name": "Yunggi Alyana",
-      "url": "https://yunggialyana.dev"
-    },
-    "keywords": post.tags.join(", "),
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `https://yunggialyana.dev/journal/${post.slug}`
-    }
-  };
-
-  return (
-    <>
-      {/* Inject JSON-LD Script untuk Google */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      
-      {/* Render UI Component (Client Side) */}
-      <JournalPostContent post={post} />
-    </>
-  );
+  // Render Client Component
+  return <ProjectDetailContent project={project} />;
 }
