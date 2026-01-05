@@ -2,7 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export const viewport: Viewport = {
   themeColor: "#0a0a0a",
@@ -75,8 +79,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en"> 
-      <body className={`${inter.className} bg-neutral-950 text-neutral-200 antialiased`}>
+    <html lang="en" className={inter.variable}> 
+      <body className="bg-neutral-950 text-neutral-200 antialiased font-sans">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
