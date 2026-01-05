@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from "next/link";
 import { ArrowLeft, Github, Calendar, Image as ImageIcon, Eye, ArrowRight } from 'lucide-react';
-import { projects } from '@/data/projects'; 
+import { projects, type Project } from '@/data/projects'; // Import tipe & data
 
 export default function ProjectListContent() {
   const [toggledImages, setToggledImages] = useState<Set<number>>(new Set());
@@ -46,14 +46,14 @@ export default function ProjectListContent() {
 
       {/* Projects Grid */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
-        {projects.map((project, idx) => {
+        {projects.map((project: Project, idx: number) => {
           const isToggled = toggledImages.has(idx);
           return (
           <div 
             key={idx} 
             className="group bg-zinc-900/30 border border-white/10 rounded-3xl p-6 md:p-8 hover:bg-zinc-900/50 hover:border-white/20 transition-all hover:-translate-y-1 flex flex-col"
           >
-            {/* Image Placeholder */}
+            {/* Image Placeholder / Interactive Area */}
             <div 
                onClick={() => toggleImage(idx)}
                className="w-full h-64 rounded-2xl mb-8 border border-white/5 flex flex-col items-center justify-center cursor-pointer overflow-hidden relative group/image transition-all"

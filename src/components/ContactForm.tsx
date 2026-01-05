@@ -1,12 +1,11 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { useActionState, useState, useRef } from "react"; // Update: useActionState dari 'react'
+import { useActionState, useState, useRef } from "react";
 import { Turnstile } from "@marsidev/react-turnstile";
-import { sendEmail } from "@/actions/send-email";
+import { sendEmail, type FormState } from "@/actions/send-email"; // Import tipe
 import { Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 
-// Tombol Submit dengan State Loading
 function SubmitButton() {
   const { pending } = useFormStatus();
 
@@ -29,14 +28,13 @@ function SubmitButton() {
   );
 }
 
+const initialState: FormState = { success: false, message: "" };
+
 export default function ContactForm() {
-  // State untuk Server Action
-  // FIX: useFormState diganti useActionState
-  const [state, formAction] = useActionState(sendEmail, { success: false, message: "" });
+  const [state, formAction] = useActionState(sendEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
-  // Reset form kalau sukses
   if (state.success && formRef.current) {
     formRef.current.reset();
   }
@@ -55,6 +53,8 @@ export default function ContactForm() {
           placeholder="John Doe"
           className="w-full bg-zinc-900/50 border border-white/10 rounded-xl p-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors"
         />
+        {/* Tampilkan Error Field jika ada (dari Zod) */}
+        {state.errors?.name && <p className="text-red-400 text-xs">{state.errors.name[0]}</p>}
       </div>
 
       {/* Email Input */}
@@ -68,6 +68,7 @@ export default function ContactForm() {
           placeholder="john@example.com"
           className="w-full bg-zinc-900/50 border border-white/10 rounded-xl p-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors"
         />
+        {state.errors?.email && <p className="text-red-400 text-xs">{state.errors.email[0]}</p>}
       </div>
 
       {/* Message Input */}
@@ -81,20 +82,20 @@ export default function ContactForm() {
           placeholder="Tell me about your project..."
           className="w-full bg-zinc-900/50 border border-white/10 rounded-xl p-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors resize-none"
         />
+        {state.errors?.message && <p className="text-red-400 text-xs">{state.errors.message[0]}</p>}
       </div>
 
-      {/* Cloudflare Turnstile */}
-      <div className="flex justify-center md:justify-start">
+      <div className="flex justify-center md:justify-start flex-col gap-2">
         <Turnstile
           siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
           onSuccess={(token) => setCaptchaToken(token)}
-          options={{ theme: 'dark' }} // Biar matching sama website
+          options={{ theme: 'dark' }}
         />
+        {state.errors?.token && <p className="text-red-400 text-xs">{state.errors.token[0]}</p>}
       </div>
 
       <SubmitButton />
 
-      {/* Feedback Messages */}
       {state.message && (
         <div className={`p-4 rounded-xl flex items-center gap-3 text-sm ${state.success ? 'bg-emerald-900/20 text-emerald-400 border border-emerald-500/20' : 'bg-red-900/20 text-red-400 border border-red-500/20'}`}>
           {state.success ? <CheckCircle size={18} /> : <AlertCircle size={18} />}

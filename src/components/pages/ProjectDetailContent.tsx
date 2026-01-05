@@ -4,24 +4,11 @@ import React, { Suspense } from 'react';
 import Link from "next/link";
 import { ArrowLeft, Github, ExternalLink, Calendar, Layers } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
-
-// Interface Project
-interface ProjectType {
-    title: string;
-    subtitle: string;
-    slug: string;
-    date: string;
-    desc: string;
-    tags: string[];
-    color: string;
-    github: string;
-    demo: string;
-    features: string[];
-    content: string;
-}
+import ReactMarkdown from 'react-markdown'; 
+import { Project } from '@/data/projects'; // IMPORT TIPE
 
 interface Props {
-  project: ProjectType;
+  project: Project; // Menggunakan tipe centralized
 }
 
 function ProjectContent({ project }: Props) {
@@ -103,9 +90,13 @@ function ProjectContent({ project }: Props) {
             </ul>
         </div>
 
-        {/* Content */}
-        <div className="prose prose-invert prose-lg max-w-none text-zinc-300 leading-relaxed">
-            <div dangerouslySetInnerHTML={{ __html: project.content || "" }} />
+        {/* Content Render Markdown */}
+        <div className="prose prose-invert prose-lg max-w-none text-zinc-300 leading-relaxed 
+            prose-headings:text-white prose-a:text-emerald-400 hover:prose-a:text-emerald-300
+            prose-ul:list-disc prose-ul:pl-5 prose-li:marker:text-zinc-500">
+            <ReactMarkdown>
+                {project.content}
+            </ReactMarkdown>
         </div>
 
       </div>

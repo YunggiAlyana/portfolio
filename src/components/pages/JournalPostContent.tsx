@@ -4,22 +4,11 @@ import React, { Suspense } from 'react';
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
-
-// Interface Post (Disesuaikan dengan data journal-posts.ts)
-interface JournalPostType {
-    title: string;
-    slug: string;
-    date: string;
-    category: string;
-    readTime: string;
-    color: string;
-    tags: string[];
-    excerpt: string;
-    content: string;
-}
+import ReactMarkdown from 'react-markdown'; 
+import { JournalPost } from '@/data/journal-posts'; // IMPORT TIPE
 
 interface Props {
-  post: JournalPostType;
+  post: JournalPost; // Menggunakan tipe centralized
 }
 
 function JournalContent({ post }: Props) {
@@ -75,9 +64,14 @@ function JournalContent({ post }: Props) {
             </div>
         </div>
 
-        {/* Konten */}
-        <div className="prose prose-invert prose-lg max-w-none text-zinc-300 leading-relaxed">
-            <div dangerouslySetInnerHTML={{ __html: post.content || "" }} />
+        {/* Konten Markdown */}
+        <div className="prose prose-invert prose-lg max-w-none text-zinc-300 leading-relaxed 
+            prose-img:rounded-xl prose-img:border prose-img:border-white/10 prose-img:shadow-2xl prose-img:w-full
+            prose-headings:text-white prose-a:text-emerald-400 hover:prose-a:text-emerald-300
+            prose-pre:bg-[#0a0a0a] prose-pre:border prose-pre:border-white/10">
+            <ReactMarkdown>
+                {post.content}
+            </ReactMarkdown>
         </div>
         
         {/* Footer */}

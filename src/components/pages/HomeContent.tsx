@@ -7,8 +7,8 @@ import {
 } from 'lucide-react';
 import Link from "next/link";
 import Image from "next/image"; 
-import { journalPosts } from '@/data/journal-posts';
-import { projects } from '@/data/projects';
+import { journalPosts, type JournalPost } from '@/data/journal-posts'; // Import Data & Tipe
+import { projects, type Project } from '@/data/projects';
 import { timelineData } from '@/data/timeline'; 
 import ContactForm from "@/components/ContactForm";
 
@@ -66,6 +66,7 @@ export default function HomeContent() {
         setIsScrolled(false);
       }
 
+      // Kalkulasi Active Section
       const scrollPosition = scrollY + window.innerHeight / 3;
       if (scrollPosition < (sectionsRef.about.current?.offsetTop || 0)) setActiveSection('hero');
       else if (scrollPosition < (sectionsRef.services.current?.offsetTop || 0)) setActiveSection('about');
@@ -79,7 +80,7 @@ export default function HomeContent() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isScrolled]);
 
-  // Effect 3: Handle URL Hash
+  // Effect 3: Handle URL Hash (Smooth Scroll pada navigasi manual)
   useEffect(() => {
     if (window.location.hash) {
       const targetId = window.location.hash.substring(1); 
@@ -87,6 +88,7 @@ export default function HomeContent() {
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth' });
+          // Hapus hash agar URL bersih
           setTimeout(() => {
             window.history.replaceState(null, '', window.location.pathname); 
           }, 1000);
@@ -108,6 +110,7 @@ export default function HomeContent() {
     sectionsRef[key].current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Mengambil 2 data terbaru untuk ditampilkan di Home
   const latestJournal = journalPosts.slice(0, 2);
   const latestProjects = projects.slice(0, 2);
 
@@ -278,6 +281,7 @@ export default function HomeContent() {
                     Former Retail Leader turned Software Engineer with a passion for building systems that are not just functional, but resilient.
                 </p>
                 <div className="border-l-2 border-white/10 ml-2 md:ml-4 space-y-12">
+                    {/* Menggunakan timelineData */}
                     {timelineData.map((item) => (
                         <div key={item.id} className="relative pl-8 md:pl-12 group">
                             <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 bg-[#050505] transition-all duration-300
@@ -336,7 +340,8 @@ export default function HomeContent() {
             <div className="space-y-8">
                <p>Building real-world solutions: from YouTube-based Certificate Generators to ML-powered Telco Recommendation Systems.</p>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {latestProjects.map((project, idx) => (
+                  {/* Mapping 2 Project Terbaru */}
+                  {latestProjects.map((project: Project, idx: number) => (
                     <Link 
                         key={idx} 
                         href={`/projects/${project.slug}?from=home`} 
@@ -372,7 +377,8 @@ export default function HomeContent() {
             <div className="space-y-8">
                <p>Writing about code security, system architecture, and the evolving landscape of web development.</p>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {latestJournal.map((post, idx) => (
+                  {/* Mapping 2 Journal Terbaru */}
+                  {latestJournal.map((post: JournalPost, idx: number) => (
                     <Link 
                       key={idx} 
                       href={`/journal/${post.slug}?from=home`} 
@@ -430,6 +436,7 @@ export default function HomeContent() {
                     </div>
                 </div>
                 <div className="bg-zinc-900/20 border border-white/5 p-6 md:p-8 rounded-3xl backdrop-blur-sm">
+                    {/* Menggunakan ContactForm yang sudah di-refactor */}
                     <ContactForm />
                 </div>
             </div>

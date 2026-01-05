@@ -1,28 +1,40 @@
-export const projects = [
+export interface Project {
+  title: string;
+  subtitle: string;
+  slug: string;
+  date: string;
+  desc: string;
+  tags: string[];
+  color: string;
+  github: string;
+  demo: string;
+  features: string[];
+  content: string; 
+}
+
+export const projects: Project[] = [
   {
     title: "CertifYT",
     subtitle: "YouTube Playlist Certificate Generator",
-    slug: "certifyt", // <--- Slug URL
+    slug: "certifyt",
     date: "Nov 2025 - Present",
     desc: "A web application that converts self-taught learning effort on YouTube into valid certificates of achievement. Automates total duration calculation and generates unique QR codes for verification.",
     tags: ["Next.js", "TypeScript", "YouTube Data API", "Supabase", "CSS Print"],
     color: "emerald",
     github: "https://github.com/YunggiAlyana/certifyt",
-    demo: "#", // Kalau ada link demo
+    demo: "#", 
     features: ["Automates duration calculation", "Advanced CSS Print for PDF", "1-click LinkedIn add"],
     content: `
-      <h2>The Problem</h2>
-      <p>Self-taught developers watch hundreds of hours of tutorials on YouTube but have no "proof" of their learning compared to paid platforms like Udemy or Coursera.</p>
-      
-      <h2>The Solution</h2>
-      <p>CertifYT bridges this gap by using the <b>YouTube Data API</b> to fetch playlist details, calculate the total learning hours, and generate a professional PDF certificate with a verifiable QR code.</p>
+## The Problem
+Self-taught developers watch hundreds of hours of tutorials on YouTube but have no "proof" of their learning compared to paid platforms like Udemy or Coursera.
 
-      <h2>Technical Highlights</h2>
-      <ul class="list-disc pl-5 space-y-2 mb-6">
-        <li><b>Next.js App Router:</b> For fast server-side rendering of certificate pages.</li>
-        <li><b>Supabase:</b> Storing user generation limits and certificate validation records.</li>
-        <li><b>Puppeteer (planned):</b> To automate high-quality PDF generation server-side.</li>
-      </ul>
+## The Solution
+CertifYT bridges this gap by using the **YouTube Data API** to fetch playlist details, calculate the total learning hours, and generate a professional PDF certificate with a verifiable QR code.
+
+## Technical Highlights
+- **Next.js App Router:** For fast server-side rendering of certificate pages.
+- **Supabase:** Storing user generation limits and certificate validation records.
+- **Puppeteer (planned):** To automate high-quality PDF generation server-side.
     `
   },
   {
@@ -37,16 +49,14 @@ export const projects = [
     demo: "#",
     features: ["Project Manager & Backend Lead", "Hapi.js Core Architecture", "Python/FastAPI ML Microservice"],
     content: `
-      <h2>Overview</h2>
-      <p>As the <b>Project Manager and Backend Lead</b> for this Capstone Project, I orchestrated a team of 5 to build an intelligent recommendation engine for Telecommunication providers.</p>
+## Overview
+As the **Project Manager and Backend Lead** for this Capstone Project, I orchestrated a team of 5 to build an intelligent recommendation engine for Telecommunication providers.
 
-      <h2>Architecture</h2>
-      <p>We used a microservices approach:</p>
-      <ul class="list-disc pl-5 space-y-2 mb-6">
-        <li><b>Core Backend (Hapi.js):</b> Handled user authentication, business logic, and transaction history.</li>
-        <li><b>ML Service (FastAPI):</b> A Python service hosting the Scikit-Learn model that predicts user preferences based on usage data.</li>
-        <li><b>Frontend (React):</b> A dashboard for users to view personalized packages.</li>
-      </ul>
+## Architecture
+We used a microservices approach:
+- **Core Backend (Hapi.js):** Handled user authentication, business logic, and transaction history.
+- **ML Service (FastAPI):** A Python service hosting the Scikit-Learn model that predicts user preferences based on usage data.
+- **Frontend (React):** A dashboard for users to view personalized packages.
     `
   },
   {
@@ -61,10 +71,11 @@ export const projects = [
     demo: "#",
     features: ["Full CRUD functionality", "Secure data handling", "Strict RESTful standards"],
     content: `
-      <h2>Objective</h2>
-      <p>To build a standard-compliant REST API without using heavy frameworks like NestJS, focusing on pure architectural understanding using Hapi.js.</p>
-      <h2>Key Features</h2>
-      <p>The API passes all Postman integration tests for adding, reading, updating, and deleting book records with proper HTTP status codes (200, 201, 404, 500).</p>
+## Objective
+To build a standard-compliant REST API without using heavy frameworks like NestJS, focusing on pure architectural understanding using Hapi.js.
+
+## Key Features
+The API passes all Postman integration tests for adding, reading, updating, and deleting book records with proper HTTP status codes (200, 201, 404, 500).
     `
   },
   {
@@ -79,10 +90,11 @@ export const projects = [
     demo: "#",
     features: ["Instant PLU/Barcode access", "Lightweight execution", "Real-world problem solver"],
     content: `
-      <h2>Background</h2>
-      <p>During my time in Retail Operations, I noticed staff wasting minutes searching for PLU codes in physical manuals. I built this tool to solve that specific pain point.</p>
-      <h2>Impact</h2>
-      <p>Reduced search time from ~2 minutes to <5 seconds per query, significantly improving cashier efficiency during peak hours.</p>
+## Background
+During my time in Retail Operations, I noticed staff wasting minutes searching for PLU codes in physical manuals. I built this tool to solve that specific pain point.
+
+## Impact
+Reduced search time from ~2 minutes to <5 seconds per query, significantly improving cashier efficiency during peak hours.
     `
   }
 ];

@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from "next/link";
+import Image from "next/image"; // Gunakan Image component
 import { ArrowLeft, Calendar, Tag, Clock, ArrowRight, Eye } from 'lucide-react'; 
-import { journalPosts } from '@/data/journal-posts';
+import { journalPosts, type JournalPost } from '@/data/journal-posts'; // Import tipe
 
 export default function JournalListContent() {
   const [toggledImages, setToggledImages] = useState<Set<number>>(new Set());
@@ -46,7 +47,7 @@ export default function JournalListContent() {
 
       {/* Blog List Loop */}
       <div className="max-w-4xl mx-auto space-y-12 relative z-10">
-        {journalPosts.map((post, idx) => {
+        {journalPosts.map((post: JournalPost, idx: number) => {
           const isToggled = toggledImages.has(idx);
           return (
           <article 
@@ -67,16 +68,18 @@ export default function JournalListContent() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Image Section */}
+                {/* Image Section - Optimized with Next/Image */}
                 <div 
                    onClick={() => toggleImage(idx)}
                    className="col-span-1 h-48 md:h-full bg-zinc-900/50 rounded-2xl border border-white/5 overflow-hidden relative cursor-pointer group/image transition-all hover:border-white/20"
                 >
                    <div className={`absolute inset-0 transition-all duration-500 transform group-hover/image:scale-105 ${isToggled ? 'opacity-0' : 'opacity-100'}`}>
-                      <img 
-                        src="/images/journal/google-search-proof.png" 
+                      <Image 
+                        src="/images/journal/google-search-proof.png" // Image sementara
                         alt="Journal Cover"
-                        className="w-full h-full object-cover opacity-80 group-hover/image:opacity-100 transition-opacity"
+                        fill
+                        className="object-cover opacity-80 group-hover/image:opacity-100 transition-opacity"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
                    </div>
                    

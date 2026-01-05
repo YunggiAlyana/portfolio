@@ -2,9 +2,10 @@ import { MetadataRoute } from 'next';
 import { journalPosts } from '@/data/journal-posts';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://yunggialyana.dev';
+  // Gunakan env variable, fallback ke domain utama jika tidak ada
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://yunggialyana.dev';
 
-  const routes = ['', '/journal'].map((route) => ({
+  const routes = ['', '/journal', '/projects'].map((route) => ({ // Tambahkan /projects juga
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

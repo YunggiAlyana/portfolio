@@ -15,6 +15,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yunggialyana.dev'), 
+  alternates: {
+    canonical: '/', // Best practice SEO
+  },
   title: {
     default: "Yunggi Alyana (Yunggi Alyana Rahman) | Full Stack & Security Researcher",
     template: "%s | Yunggi Alyana Rahman" 
