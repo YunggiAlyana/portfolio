@@ -14,22 +14,22 @@ export const timelineData: TimelineItem[] = [
   {
     id: 1,
     type: "work",
-    role: "Independent Security Researcher",
-    company: "Self-Employed",
-    date: "Jan 2026 - Present",
-    location: "Remote",
-    desc: "Conducting ethical security research and vulnerability assessments on public academic infrastructure. Identified critical network misconfigurations (Origin IP Disclosure) and utilized OSINT methodologies.",
-    skills: ["OSINT", "Vulnerability Assessment", "Network Security"]
-  },
-  {
-    id: 2,
-    type: "work",
     role: "Full-Stack Web Developer Cohort",
     company: "Coding Camp powered by DBS Foundation",
     date: "Feb 2026 - Present",
     location: "Remote",
     desc: "Led the frontend and UI/UX architecture for the 'Vitara' capstone project. Mastered industry-standard web development, focusing on React and Next.js, while receiving direct guidance from IT experts.",
     skills: ["React", "Next.js", "Frontend Development", "UI/UX"]
+  },
+  {
+    id: 2,
+    type: "work",
+    role: "Independent Security Researcher",
+    company: "Self-Employed",
+    date: "Jan 2026 - Present",
+    location: "Remote",
+    desc: "Conducting ethical security research and vulnerability assessments on public academic infrastructure. Identified critical network misconfigurations (Origin IP Disclosure) and utilized OSINT methodologies.",
+    skills: ["OSINT", "Vulnerability Assessment", "Network Security"]
   },
   {
     id: 3,
@@ -44,6 +44,16 @@ export const timelineData: TimelineItem[] = [
   {
     id: 4,
     type: "work",
+    role: "Full Stack & AI Cohort (Best Graduate)",
+    company: "Asah led by Dicoding & Accenture",
+    date: "Aug 2025 - Jan 2026",
+    location: "Remote",
+    desc: "Graduated with Distinction. Led the 'TelcoSense' capstone project (Score: 92). Developed secure backend using Hapi.js and integrated ML services via FastAPI. Managed end-to-end deployment on Vercel and Railway.",
+    skills: ["Hapi.js", "FastAPI", "DevOps", "Team Leadership"]
+  },
+  {
+    id: 5,
+    type: "work",
     role: "Store Crew",
     company: "Indomaret Group",
     date: "Aug 2022 - Dec 2025",
@@ -53,7 +63,7 @@ export const timelineData: TimelineItem[] = [
   },
   // --- EDUCATION ---
   {
-    id: 5,
+    id: 6,
     type: "education",
     role: "Bachelor's degree, Information Systems",
     company: "Universitas Terbuka",
@@ -63,7 +73,7 @@ export const timelineData: TimelineItem[] = [
     skills: ["Data Structures", "Web Programming", "Network Security"]
   },
   {
-    id: 6,
+    id: 7,
     type: "education",
     role: "High School Diploma, Software Engineering",
     company: "SMK Madya Depok",
