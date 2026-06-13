@@ -14,6 +14,31 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Vitara",
+    subtitle: "Your Health, Unified.",
+    slug: "vitara",
+    date: "Mar 2026 - May 2026",
+    desc: "A mobile-first health ecosystem built as a capstone project. Transforms complex AI-driven health inputs into an intuitive, seamless user experience.",
+    tags: ["Next.js", "React", "Tailwind CSS", "UI/UX"],
+    color: "green", 
+    github: "#", 
+    demo: "#", 
+    features: ["Lead Frontend & UI/UX", "35-Day Agile Sprint", "Cream & Green Sage Palette"],
+    content: `
+## Overview
+Vitara is a comprehensive health ecosystem designed to unify daily habit tracking. Built during the DBS Foundation Coding Camp, the application bridges the gap between sophisticated AI health models and everyday users.
+
+## My Role: Frontend & UI/UX Lead
+While my teammates developed the underlying Machine Learning models, I took full ownership of the interface and user experience architecture.
+- **Visual Identity:** Engineered a bespoke "cream and green sage" color palette to evoke a calming, stress-free environment for users managing their health metrics.
+- **Interactive Elements:** Designed the interface to seamlessly accommodate "Vee", the platform's interactive mascot, ensuring an approachable user journey.
+
+## Technical Execution
+- **Agile Sprint:** Architected and deployed the complete frontend ecosystem within a rigorous 35-day sprint.
+- **Tech Stack:** Utilized Next.js and Tailwind CSS to build modular, responsive components that interact flawlessly with the backend AI services.
+    `
+  },
+  {
     title: "CertifYT",
     subtitle: "YouTube Playlist Certificate Generator",
     slug: "certifyt",
