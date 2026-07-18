@@ -278,7 +278,7 @@ export default function HomeContent() {
             <div className="space-y-12">
                 <p>
                     Crafting secure & scalable digital experiences. Specialized in <span className="text-emerald-400">Next.js Architecture</span> and <span className="text-emerald-400">Vulnerability Assessment</span>. 
-                    Former Retail Leader turned Software Engineer with a passion for building systems that are not just functional, but resilient.
+                    Currently a <b>Project Drafter</b> at Indomaret Group, having transitioned from retail operations, I bring a unique blend of technical design, resilience, and operational empathy to build secure applications that solve real-world friction.
                 </p>
                 <div className="border-l-2 border-white/10 ml-2 md:ml-4 space-y-12">
                     {/* Menggunakan timelineData */}
