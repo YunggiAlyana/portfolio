@@ -14,6 +14,16 @@ export const timelineData: TimelineItem[] = [
   {
     id: 1,
     type: "work",
+    role: "Project Drafter",
+    company: "Indomaret Group",
+    date: "Jul 2026 - Present",
+    location: "Depok, Jawa Barat",
+    desc: "Successfully transitioned to the Project Department, bridging extensive retail operations experience with technical drafting to design highly efficient commercial spaces.",
+    skills: ["AutoCAD", "Space Planning", "2D Drafting", "Process Optimization"]
+  },
+  {
+    id: 2,
+    type: "work",
     role: "Full-Stack Web Developer Cohort",
     company: "Coding Camp powered by DBS Foundation",
     date: "Feb 2026 - Present",
@@ -22,7 +32,7 @@ export const timelineData: TimelineItem[] = [
     skills: ["React", "Next.js", "Frontend Development", "UI/UX"]
   },
   {
-    id: 2,
+    id: 3,
     type: "work",
     role: "Independent Security Researcher",
     company: "Self-Employed",
@@ -32,19 +42,19 @@ export const timelineData: TimelineItem[] = [
     skills: ["OSINT", "Vulnerability Assessment", "Network Security"]
   },
   {
-    id: 3,
+    id: 4,
     type: "work",
     role: "Store Junior Leader",
     company: "Indomaret Group",
-    date: "Jan 2026 - Present",
+    date: "Jan 2026 - Jul 2026",
     location: "Depok, Jawa Barat",
-    desc: "Leading a team to ensure operational targets and SLAs are met. Mentoring new crew members in SOPs and operational workflows while balancing academic responsibilities.",
+    desc: "Led a team to ensure operational targets and SLAs were met. Mentored new crew members in SOPs and operational workflows while balancing academic responsibilities.",
     skills: ["Team Supervision", "Leadership", "Operational Excellence"]
   },
   {
-    id: 4,
+    id: 5,
     type: "work",
-    role: "Full Stack & AI Cohort (Best Graduate)",
+    role: "Full Stack & AI Cohort (Distinction)",
     company: "Asah led by Dicoding & Accenture",
     date: "Aug 2025 - Jan 2026",
     location: "Remote",
@@ -52,7 +62,7 @@ export const timelineData: TimelineItem[] = [
     skills: ["Hapi.js", "FastAPI", "DevOps", "Team Leadership"]
   },
   {
-    id: 5,
+    id: 6,
     type: "work",
     role: "Store Crew",
     company: "Indomaret Group",
@@ -63,7 +73,7 @@ export const timelineData: TimelineItem[] = [
   },
   // --- EDUCATION ---
   {
-    id: 6,
+    id: 7,
     type: "education",
     role: "Bachelor's degree, Information Systems",
     company: "Universitas Terbuka",
@@ -73,7 +83,7 @@ export const timelineData: TimelineItem[] = [
     skills: ["Data Structures", "Web Programming", "Network Security"]
   },
   {
-    id: 7,
+    id: 8,
     type: "education",
     role: "High School Diploma, Software Engineering",
     company: "SMK Madya Depok",
