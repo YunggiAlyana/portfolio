@@ -3,13 +3,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   User, Briefcase, Mail, Github, Linkedin, 
-  ArrowDown, Sparkles, PenTool, Terminal, MapPin, Calendar 
+  ArrowDown, Sparkles, PenTool, Terminal, MapPin, Calendar, Shield 
 } from 'lucide-react';
 import Link from "next/link";
 import Image from "next/image"; 
-import { journalPosts, type JournalPost } from '@/data/journal-posts'; // Import Data & Tipe
+import { journalPosts, type JournalPost } from '@/data/journal-posts'; 
 import { projects, type Project } from '@/data/projects';
 import { timelineData } from '@/data/timeline'; 
+import { skillsData } from '@/data/skills';
 import ContactForm from "@/components/ContactForm";
 
 // --- Types & Refs ---
@@ -281,7 +282,6 @@ export default function HomeContent() {
                     Currently a <b>Project Drafter</b> at Indomaret Group, having transitioned from retail operations, I bring a unique blend of technical design, resilience, and operational empathy to build secure applications that solve real-world friction.
                 </p>
                 <div className="border-l-2 border-white/10 ml-2 md:ml-4 space-y-12">
-                    {/* Menggunakan timelineData */}
                     {timelineData.map((item) => (
                         <div key={item.id} className="relative pl-8 md:pl-12 group">
                             <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 bg-[#050505] transition-all duration-300
@@ -318,20 +318,22 @@ export default function HomeContent() {
 
         <Section sectionRef={sectionsRef.services} id="services" tag="02. SKILLS" title="Technical Arsenal." color="text-yellow-500">
              <div className="space-y-6">
-                <p>Specializing in <b>Full Stack Engineering</b> with a focus on scalability and security.</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-zinc-400 text-sm">
-                   <ul className="space-y-2 border-l border-white/10 pl-4">
-                      <li className="text-white font-bold mb-2">Frontend & Core</li>
-                      <li>Next.js & React 19</li>
-                      <li>TypeScript (Strict Mode)</li>
-                      <li>Tailwind CSS & Shadcn/UI</li>
-                   </ul>
-                   <ul className="space-y-2 border-l border-white/10 pl-4">
-                      <li className="text-white font-bold mb-2">Backend & AI</li>
-                      <li>Node.js & Hapi.js</li>
-                      <li>Python & FastAPI (ML Integration)</li>
-                      <li>Supabase (PostgreSQL) & MongoDB</li>
-                   </ul>
+                <p>Specializing in <b>Full Stack Engineering</b>, accompanied by a strong foundation in commercial spatial design and infrastructure security.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-zinc-400 text-sm">
+                   {skillsData.map((category) => (
+                       <ul key={category.id} className="space-y-2 border-l border-white/10 pl-4">
+                          <li className="text-white font-bold mb-2 flex items-center gap-2">
+                              {category.iconName === 'Terminal' && <Terminal size={14} className={category.iconColor}/>}
+                              {category.iconName === 'Sparkles' && <Sparkles size={14} className={category.iconColor}/>}
+                              {category.iconName === 'PenTool' && <PenTool size={14} className={category.iconColor}/>}
+                              {category.iconName === 'Shield' && <Shield size={14} className={category.iconColor}/>}
+                              {category.title}
+                          </li>
+                          {category.items.map((item, idx) => (
+                              <li key={idx}>{item}</li>
+                          ))}
+                       </ul>
+                   ))}
                 </div>
              </div>
         </Section>
@@ -340,7 +342,6 @@ export default function HomeContent() {
             <div className="space-y-8">
                <p>Building real-world solutions: from YouTube-based Certificate Generators to ML-powered Telco Recommendation Systems.</p>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Mapping 2 Project Terbaru */}
                   {latestProjects.map((project: Project, idx: number) => (
                     <Link 
                         key={idx} 
@@ -377,127 +378,4 @@ export default function HomeContent() {
             <div className="space-y-8">
                <p>Writing about code security, system architecture, and the evolving landscape of web development.</p>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Mapping 2 Journal Terbaru */}
-                  {latestJournal.map((post: JournalPost, idx: number) => (
-                    <Link 
-                      key={idx} 
-                      href={`/journal/${post.slug}?from=home`} 
-                      className={`group p-6 rounded-2xl bg-zinc-900/40 border border-white/5 transition-all block
-                        ${post.color === 'pink' ? 'hover:border-pink-500/30' : 
-                          post.color === 'emerald' ? 'hover:border-emerald-500/30' : 
-                          post.color === 'blue' ? 'hover:border-blue-500/30' : 'hover:border-white/30'}
-                      `}
-                    >
-                      <div className={`flex items-center gap-2 text-xs font-mono mb-3 
-                         ${post.color === 'pink' ? 'text-pink-400' : 
-                           post.color === 'emerald' ? 'text-emerald-400' : 
-                           post.color === 'blue' ? 'text-blue-400' : 'text-zinc-400'}
-                      `}>
-                          <span>{post.date}</span> • <span>{post.category}</span>
-                      </div>
-                      <h3 className={`text-xl font-bold text-white mb-2 transition-colors
-                         ${post.color === 'pink' ? 'group-hover:text-pink-400' : 
-                           post.color === 'emerald' ? 'group-hover:text-emerald-400' : 
-                           post.color === 'blue' ? 'group-hover:text-blue-400' : 'group-hover:text-white'}
-                      `}>
-                          {post.title}
-                      </h3>
-                      <p className="text-sm text-zinc-500 line-clamp-2">
-                          {post.excerpt || "Read this article to learn more about my latest findings in software engineering."}
-                      </p>
-                    </Link>
-                  ))}
-               </div>
-               <Link href="/journal" className="inline-flex items-center gap-3 text-white border-b border-white/20 pb-1 hover:border-white transition-all group">
-                  Read All Articles 
-                  <ArrowDown size={16} className="rotate-[-90deg] group-hover:translate-x-2 transition-transform"/>
-               </Link>
-            </div>
-        </Section>
-
-        <div ref={sectionsRef.contact} className="min-h-screen flex items-center justify-center p-8 md:p-20 border-t border-white/5 bg-black">
-            <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
-                <div className="text-center md:text-left">
-                    <span className="text-emerald-500 font-mono tracking-widest text-sm mb-6 block">05. GET IN TOUCH</span>
-                    <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tighter leading-none">Let's build something secure.</h2>
-                    <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-                        Have a project in mind or want to discuss security architecture? 
-                        I'm currently available for freelance projects and consulting.
-                    </p>
-                    <div className="flex flex-col md:flex-row gap-6 justify-center md:justify-start text-sm font-mono text-zinc-500">
-                        <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                            Open to Work
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                            Depok, Indonesia (GMT+7)
-                        </div>
-                    </div>
-                </div>
-                <div className="bg-zinc-900/20 border border-white/5 p-6 md:p-8 rounded-3xl backdrop-blur-sm">
-                    {/* Menggunakan ContactForm yang sudah di-refactor */}
-                    <ContactForm />
-                </div>
-            </div>
-        </div>
-      </main>
-    </div>
-  );
-}
-
-// Sub Components
-interface NavItemProps {
-    isScrolled: boolean;
-    activeSection: string;
-    sectionKey: string;
-    icon: React.ReactElement;
-    label: string;
-    scrollTo: (key: string) => void;
-    className?: string;
-}
-
-const NavItem = ({ isScrolled, activeSection, sectionKey, icon, label, scrollTo, className }: NavItemProps) => (
-  <div 
-    onClick={() => scrollTo(sectionKey)}
-    className={`group relative cursor-pointer transition-all duration-[800ms] ease-[cubic-bezier(0.2,1,0.2,1)] overflow-hidden will-change-transform
-      ${isScrolled
-        ? `p-2 md:p-3 flex items-center justify-center md:justify-start gap-3 border-transparent rounded-xl hover:bg-white/5 flex-shrink-0
-           ${activeSection === sectionKey ? 'bg-white/10 text-white shadow-lg' : 'text-zinc-500 hover:text-white'}`
-        : `flex flex-col items-center justify-center text-center p-4 md:p-8 bg-zinc-900/50 border border-white/10 rounded-[2.5rem]
-           hover:border-emerald-500/30 hover:bg-zinc-800/80 hover:scale-[1.02] shadow-xl ${className}`
-      }
-    `}
-  >
-    <div className={`relative z-10 transition-all duration-700 ${isScrolled && activeSection === sectionKey ? 'text-emerald-400 scale-110' : 'text-zinc-500 group-hover:text-white'}`}>
-      {React.cloneElement(icon as React.ReactElement<any>, { size: isScrolled ? 18 : 28 })}
-    </div>
-    <h3 className={`font-bold transition-all duration-700 relative z-10 ${isScrolled ? 'hidden md:block text-sm' : 'text-sm md:text-lg text-white mt-3'}`}>
-      {label}
-    </h3>
-    {isScrolled && activeSection === sectionKey && (
-      <div className="absolute bottom-1 md:bottom-auto md:ml-auto md:relative w-1 h-1 md:w-1.5 md:h-1.5 bg-emerald-500 rounded-full shadow-[0_0_10px_#10b981] animate-pulse" />
-    )}
-  </div>
-);
-
-interface SectionProps {
-    sectionRef: React.RefObject<HTMLDivElement | null>;
-    id: string;
-    tag: string;
-    title: string;
-    color: string;
-    children: React.ReactNode;
-}
-
-const Section = ({ sectionRef, id, tag, title, color, children }: SectionProps) => (
-    <section id={id} ref={sectionRef} className="min-h-screen flex items-center p-8 md:p-24 border-t border-white/5 bg-[#050505]">
-        <div className="max-w-4xl w-full">
-            <span className={`${color} font-mono tracking-[0.5em] text-xs mb-8 block uppercase`}>{tag}</span>
-            <h2 className="text-5xl md:text-8xl font-bold text-white mb-12 tracking-tighter leading-[0.9]">{title}</h2>
-            <div className="text-xl text-zinc-500 leading-relaxed max-w-xl">
-                {children}
-            </div>
-        </div>
-    </section>
-);
+                  {latestJournal.map((post: JournalPost, idx: 
