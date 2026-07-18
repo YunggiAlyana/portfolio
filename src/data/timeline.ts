@@ -24,6 +24,16 @@ export const timelineData: TimelineItem[] = [
   {
     id: 2,
     type: "work",
+    role: "Front-end AI Engineering Intern",
+    company: "FlyRank AI",
+    date: "Jun 2026 - Present",
+    location: "Chicago, IL (Remote)",
+    desc: "Focusing on Front-end AI Engineering. Utilizing AI tools to accelerate problem-solving and component development, specializing in Next.js, TypeScript, and modern cloud deployment.",
+    skills: ["Next.js", "TypeScript", "AI Integration", "Prompt Engineering"]
+  },
+  {
+    id: 3,
+    type: "work",
     role: "Full-Stack Web Developer Cohort",
     company: "Coding Camp powered by DBS Foundation",
     date: "Feb 2026 - Present",
@@ -32,7 +42,7 @@ export const timelineData: TimelineItem[] = [
     skills: ["React", "Next.js", "Frontend Development", "UI/UX"]
   },
   {
-    id: 3,
+    id: 4,
     type: "work",
     role: "Independent Security Researcher",
     company: "Self-Employed",
@@ -42,7 +52,7 @@ export const timelineData: TimelineItem[] = [
     skills: ["OSINT", "Vulnerability Assessment", "Network Security"]
   },
   {
-    id: 4,
+    id: 5,
     type: "work",
     role: "Store Junior Leader",
     company: "Indomaret Group",
@@ -52,7 +62,7 @@ export const timelineData: TimelineItem[] = [
     skills: ["Team Supervision", "Leadership", "Operational Excellence"]
   },
   {
-    id: 5,
+    id: 6,
     type: "work",
     role: "Full Stack & AI Cohort (Distinction)",
     company: "Asah led by Dicoding & Accenture",
@@ -62,7 +72,7 @@ export const timelineData: TimelineItem[] = [
     skills: ["Hapi.js", "FastAPI", "DevOps", "Team Leadership"]
   },
   {
-    id: 6,
+    id: 7,
     type: "work",
     role: "Store Crew",
     company: "Indomaret Group",
@@ -73,7 +83,7 @@ export const timelineData: TimelineItem[] = [
   },
   // --- EDUCATION ---
   {
-    id: 7,
+    id: 8,
     type: "education",
     role: "Bachelor's degree, Information Systems",
     company: "Universitas Terbuka",
@@ -83,7 +93,7 @@ export const timelineData: TimelineItem[] = [
     skills: ["Data Structures", "Web Programming", "Network Security"]
   },
   {
-    id: 8,
+    id: 9,
     type: "education",
     role: "High School Diploma, Software Engineering",
     company: "SMK Madya Depok",
