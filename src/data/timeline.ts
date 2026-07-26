@@ -34,12 +34,12 @@ export const timelineData: TimelineItem[] = [
   {
     id: 3,
     type: "work",
-    role: "Full-Stack Web Developer Cohort",
+    role: "Full-Stack Web Developer Cohort (Distinction)",
     company: "Coding Camp powered by DBS Foundation",
-    date: "Feb 2026 - Present",
+    date: "Feb 2026 - Jul 2026",
     location: "Remote",
-    desc: "Led the frontend and UI/UX architecture for the 'Vitara' capstone project. Mastered industry-standard web development, focusing on React and Next.js, while receiving direct guidance from IT experts.",
-    skills: ["React", "Next.js", "Frontend Development", "UI/UX"]
+    desc: "Graduated with Distinction (Average Score: 95). Led the frontend and UI/UX architecture for the 'Vitara' capstone project, which was recognized as a Top 15 Capstone Project and awarded Best Capstone Team out of 469 teams. Mastered industry-standard web development, focusing on React and Next.js.",
+    skills: ["React", "Next.js", "Frontend Development", "UI/UX", "Team Leadership"]
   },
   {
     id: 4,
